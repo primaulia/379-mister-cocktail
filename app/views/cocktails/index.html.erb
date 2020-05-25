@@ -3,7 +3,11 @@
   <div class="col">
     <div class="card my-3">
       <div class="card-body">
-        <h5 class="card-title"><%= cocktail.name %></h5>
+        <h5 class="card-title">
+          <%= link_to cocktail_path(cocktail) do %>
+            <%= cocktail.name %>
+          <% end %>
+        </h5>
       </div>
     </div>    
   </div>

@@ -1,0 +1,7 @@
+<h2>Create new cocktail</h2>
+
+<%= simple_form_for(@new_cocktail) do |f| %>
+  <%= f.input :name %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>
+  
