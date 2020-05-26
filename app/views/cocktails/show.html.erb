@@ -1,3 +1,14 @@
 <h2><%= @the_cocktail.name %></h2>
 
-<%= link_to 'Back to Home', root_path %>
+<h3>Recipes</h3>
+<ul>
+  <% @the_cocktail.doses.each do |dose| %>
+    <li>
+      <%= dose.description %> of <%= dose.ingredient.name %> | 
+      <%= link_to 'delete', dose, method: :delete %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Create dose', new_cocktail_dose_path(@the_cocktail), class: 'btn btn-primary'  %>
+<%= link_to 'Back to Home', root_path, class: 'btn btn-secondary' %>
