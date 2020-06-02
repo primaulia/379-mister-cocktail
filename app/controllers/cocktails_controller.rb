@@ -4,26 +4,36 @@ class CocktailsController < ApplicationController
 
 
   def index
-    @cocktails = Cocktail.all
+    # only throw cocktail that belongs to me
+    @cocktails = policy_scope(Cocktail)
+    
   end
 
   def show
     @the_cocktail = Cocktail.find(params[:id])
+    authorize @the_cocktail
   end
 
   def new
     @new_cocktail = Cocktail.new
+    authorize @new_cocktail
   end
 
   def create
     @new_cocktail = Cocktail.new(cocktail_params)
     @new_cocktail.user = current_user
-    
+
+    authorize @new_cocktail    
     if @new_cocktail.save
       redirect_to @new_cocktail
     else
       render :new
     end
+  end
+
+  def edit
+    @cocktail = Cocktail.find(params[:id])
+    authorize @cocktail
   end
 
 

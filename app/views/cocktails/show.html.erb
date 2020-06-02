@@ -14,5 +14,11 @@
   <% end %>
 </ul>
 
+<!-- authorize(@cocktail) ==> in the controller -->
+<!-- in the view ==> policy(<instance_name>).<action_name>? -->
+<% if policy(@the_cocktail).edit? %>
+  <%= link_to 'Edit cocktail', edit_cocktail_path(@the_cocktail), class: 'btn btn-secondary' %>
+<% end %>
+
 <%= link_to 'Create dose', new_cocktail_dose_path(@the_cocktail), class: 'btn btn-primary'  %>
 <%= link_to 'Back to Home', root_path, class: 'btn btn-secondary' %>
