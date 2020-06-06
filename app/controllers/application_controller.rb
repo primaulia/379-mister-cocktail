@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user! # whitelist authentication
+  # enable strong params for address with DEVISE
+  before_action :sanitize_input, if: :devise_controller?
 
   include Pundit # whitelist AUTHORIZATION
 
@@ -17,5 +19,9 @@ class ApplicationController < ActionController::Base
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
+  end
+
+  def sanitize_input
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:address])
   end
 end

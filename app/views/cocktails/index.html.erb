@@ -1,15 +1,7 @@
 <%= link_to "Create new cocktail", new_cocktail_path, class: 'btn btn-primary btn-block my-3' %>
 
 <div class="row">
-  <% @cocktails.each do |cocktail| %>
-  <div class="col-md-4">
-    <%= link_to cocktail do %>
-    <div class="card-category my-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(cocktail.photo.key)%>)">
-      <%= cocktail.name %>
-    </div> 
-    <% end %> 
-  </div>
-  <% end %>  
+  <%= render @cocktails %>
 </div>
 
 

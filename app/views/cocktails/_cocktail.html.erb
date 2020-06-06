@@ -1,0 +1,15 @@
+<div class="col-md-4">
+  <div class="card-product my-3">
+    <%= cl_image_tag(cocktail.photo.key)%>
+    <div class="card-product-infos">
+      <h2><%= cocktail.name %></h2>
+      <% if cocktail.user %>
+        <p>
+          created by: <%= cocktail.user.email %>
+          latitude: <%= cocktail.user.latitude %>
+          longitude: <%= cocktail.user.longitude %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+</div>

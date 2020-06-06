@@ -18,3 +18,8 @@ require("channels")
 
 import 'bootstrap';
 // import "../stylesheets/application.scss";
+import { initMapbox } from '../plugins/init_mapbox';
+
+document.addEventListener('turbolinks:load', () => {
+  initMapbox();
+})

@@ -4,5 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :cocktails
+  has_many :cocktails, dependent: :destroy
+
+  # server-side
+  validates :address, presence: true
+
+  geocoded_by :address
+  after_validation :geocode # if the model is actually saved or not
+  # after_create # stuck before validation
 end
