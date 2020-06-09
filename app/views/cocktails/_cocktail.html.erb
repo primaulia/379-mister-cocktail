@@ -5,6 +5,9 @@
       <h2><%= cocktail.name %></h2>
       <% if cocktail.user %>
         <p>
+          <%= cocktail.instruction.first(80) + '...' %>
+        </p>
+        <p>
           created by: <%= cocktail.user.email %>
         </p>
       <% end %>

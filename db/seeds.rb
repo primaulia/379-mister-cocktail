@@ -1,8 +1,8 @@
 require 'open-uri'
 
 puts "Setup DB"
-User.destroy_all
-Ingredient.destroy_all
+# User.destroy_all
+# Ingredient.destroy_all
 
 puts "Create 2 users"
 User.create(
@@ -48,6 +48,8 @@ cocktails_arr.each do |cocktail|
   thumbnail_url = cocktail_data["drinks"][0]["strDrinkThumb"]
 
   file = URI.open(thumbnail_url) # downloading to the memory
+  the_cocktail.instruction = cocktail_data["drinks"][0]["strInstructions"]
+  the_cocktail.save
   the_cocktail.photo.attach(io: file, filename: "#{the_cocktail.name}.jpg", content_type: 'image/jpg')
 end
 
