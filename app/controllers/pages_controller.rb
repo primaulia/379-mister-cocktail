@@ -8,6 +8,6 @@ class PagesController < ApplicationController
         lat: cocktail.user.latitude,
         lng: cocktail.user.longitude
       }
-    end
+    end.uniq
   end
 end
