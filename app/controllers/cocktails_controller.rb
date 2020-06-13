@@ -26,7 +26,8 @@ class CocktailsController < ApplicationController
     if @new_cocktail.save
       redirect_to root_path(anchor: 'cocktail-form')
     else
-      render :new
+      @cocktails = Cocktail.all
+      render 'pages/home'
     end
   end
 

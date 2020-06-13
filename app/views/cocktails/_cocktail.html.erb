@@ -1,4 +1,4 @@
-<div class="card-product my-3" data-controller="voting" data-voting-cocktailid="<%= cocktail.id %>">
+<div class="card-product mb-3" data-controller="voting" data-voting-cocktailid="<%= cocktail.id %>">
   <% if cocktail.photo.attached? %>
   <%= cl_image_tag(cocktail.photo.key)%>
   <% end %>

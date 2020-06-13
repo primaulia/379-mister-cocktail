@@ -34,5 +34,6 @@ export default class extends Controller {
 
   downvote() {
     console.log('downvoting this cocktail')
+    alert('TODO: fill this function')
   }
 }

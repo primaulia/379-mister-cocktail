@@ -1,0 +1,17 @@
+<h2>Search your cocktail!</h2>
+<%= form_tag root_path, method: :get, class: "form-inline my-2" do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control mr-sm-2",
+    placeholder: "Search"
+  %>
+  <%= submit_tag "Search", class: "btn btn-outline-success my-2" %>
+<% end %>  
+
+<h2>Or create it!</h2>
+
+<%= simple_form_for(cocktail) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :photo, as: :file %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>
