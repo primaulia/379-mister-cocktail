@@ -1,16 +1,29 @@
-<div class="col-md-4">
-  <div class="card-product my-3">
-    <%= cl_image_tag(cocktail.photo.key)%>
-    <div class="card-product-infos">
-      <h2><%= cocktail.name %></h2>
-      <% if cocktail.user %>
-        <p>
-          <%= cocktail.instruction.first(80) + '...' %>
-        </p>
-        <p>
-          created by: <%= cocktail.user.email %>
-        </p>
-      <% end %>
-    </div>
+<div class="card-product my-3" data-controller="voting" data-voting-cocktailid="<%= cocktail.id %>">
+  <% if cocktail.photo.attached? %>
+  <%= cl_image_tag(cocktail.photo.key)%>
+  <% end %>
+  <div class="card-product-infos">
+    <h2><%= cocktail.name %></h2>
+    <% if cocktail.user %>
+      <p>
+        <% if cocktail.instruction %>
+        <%= cocktail.instruction.first(80) + '...' %>
+        <% end %>
+      </p>
+      <p>
+        created by: <%= cocktail.user.email %>
+      </p>
+      <p>
+        <% if policy(cocktail).destroy?  %>
+          <%= link_to 'delete', cocktail, method: :delete, remote: true %> | 
+        <% end %>
+        
+        <button class="btn btn-sm btn-success" data-action="click->voting#upvote">+</button>
+  
+        <span class="badge badge-light" data-target="voting.counter"><%= cocktail.votes %></span>
+
+        <button class="btn btn-sm btn-danger" data-action="click->voting#downvote">-</button>
+      </p>
+    <% end %>
   </div>
 </div>

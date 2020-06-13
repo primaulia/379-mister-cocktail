@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
+  layout "alternative", only: [ :home ]
+
   def home
     if params[:query].present?
       # @cocktails = Cocktail.where(name: params[:query]) #CASE SENSITIVE SEARCH
@@ -18,9 +20,10 @@ class PagesController < ApplicationController
 
       @cocktails = Cocktail.search_by_cocktail_and_user(params[:query]) #pg search ==> see `cocktail.rb`
     else
-      @cocktails = Cocktail.all
+      @cocktails = Cocktail.all.order(votes: :desc)
     end
 
+    @new_cocktail = Cocktail.new
 
     @markers = @cocktails.map do |cocktail|
       {

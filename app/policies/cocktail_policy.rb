@@ -6,7 +6,7 @@ class CocktailPolicy < ApplicationPolicy
       # else
         
       # end
-      scope.where(user: @user)
+      scope.where(user: @user).order(votes: :desc)
     end
   end
 
@@ -32,5 +32,13 @@ class CocktailPolicy < ApplicationPolicy
     # else
     #   return false
     # end
+  end
+
+  def destroy?
+    @user == @record.user
+  end
+
+  def upvote?
+    true
   end
 end
