@@ -1,0 +1,12 @@
+<div class="my-3" data-controller="chatroom" data-chatroom-id="<%= @chatroom.id %>">
+  <h1>#<%= @chatroom.name %></h1>
+  <div id="messages" data-target="chatroom.messages">
+    <%= render @chatroom.messages %>
+  </div>
+
+  <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
+    <%= f.input :content, label: false, placeholder: "Message ##{@chatroom.name}" %>
+  <% end %>
+
+  <%= link_to 'Back', chatrooms_path %>  
+</div>

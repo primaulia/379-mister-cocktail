@@ -11,4 +11,7 @@ Rails.application.routes.draw do
   # POST /cocktails/:id/upvote
 
   resources :doses, only: :destroy
+  resources :chatrooms, only: [:index, :show] do
+    resources :messages, only: :create    
+  end
 end

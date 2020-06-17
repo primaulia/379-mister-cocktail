@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :cocktails, dependent: :destroy
+  has_many :messages
 
   # server-side
   validates :address, presence: true

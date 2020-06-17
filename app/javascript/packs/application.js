@@ -19,6 +19,7 @@ require("channels")
 import 'bootstrap';
 // import "../stylesheets/application.scss";
 import { initMapbox } from '../plugins/init_mapbox';
+import { initChatroomCable } from '../channels/chatroom_channel'
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
