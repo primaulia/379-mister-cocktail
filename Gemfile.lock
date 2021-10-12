@@ -119,7 +119,7 @@ GEM
     minitest (5.14.1)
     msgpack (1.3.3)
     netrc (0.11.0)
-    nio4r (2.5.2)
+    nio4r (2.5.8)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
@@ -133,7 +133,7 @@ GEM
     pry-byebug (3.9.0)
       byebug (~> 11.0)
       pry (~> 0.13.0)
-    puma (4.3.5)
+    puma (4.3.9)
       nio4r (~> 2.0)
     pundit (2.1.0)
       activesupport (>= 3.0.0)
@@ -273,7 +273,7 @@ DEPENDENCIES
   pg_search (~> 2.3.0)
   pry
   pry-byebug
-  puma (~> 4.1)
+  puma (~> 4.3)
   pundit
   rails (~> 6.0.3, >= 6.0.3.1)
   rails-controller-testing
